@@ -33,6 +33,8 @@ public class Test {
 		m.setName("asdjalsd");
 		m.setAddress(a);
 		MallManager.addMall(m);
+		
+		System.out.println("Little injection for testing purposes!");
 	}
 
 }
