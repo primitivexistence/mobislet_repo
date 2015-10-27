@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response.Status;
 import com.mobislet.request.GetBrandRequest;
 import com.sun.jersey.core.spi.factory.ResponseBuilderImpl;
 
-@Path("/service")
+@Path("/service/brand")
 public class BrandService {
 	@POST
 	@Path("/getBrand")

@@ -113,4 +113,7 @@ public class FirebirdPersistenceService extends PersistenceGateway{
 		return id;
 	}
     
+	public void deleteAddress(Long addressId) {
+		
+	}
 }

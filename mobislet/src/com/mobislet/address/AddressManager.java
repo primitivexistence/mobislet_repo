@@ -10,4 +10,9 @@ public class AddressManager {
 		PersistenceGateway persistenceGateway = PersistenceGateway.getPersistenceGateway();//PersistenceService.GOOGLE_DATA_STORE
 		return persistenceGateway.addAddress(address);
 	}
+	
+	public static void deleteAddress(Long addressId) {
+		PersistenceGateway persistenceGateway = PersistenceGateway.getPersistenceGateway();//PersistenceService.GOOGLE_DATA_STORE
+		persistenceGateway.deleteAddress(addressId);
+	}
 }
