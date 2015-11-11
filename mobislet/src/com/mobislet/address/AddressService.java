@@ -25,6 +25,7 @@ public class AddressService {
 			builder.entity(AddressManager.addAddress(request.getAddress()));
 			builder.status(Status.OK);
 		} catch (Exception e) {
+			e.printStackTrace();
 			builder.status(Status.BAD_REQUEST);
 		}
 		

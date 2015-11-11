@@ -14,6 +14,7 @@
 		</dependency>
 
 		
+		
 		<!--dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -30,6 +31,11 @@
 			<version>1.2.7.RELEASE</version>
 		</dependency-->
 
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.2.15.Final</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.firebirdsql.jdbc</groupId>

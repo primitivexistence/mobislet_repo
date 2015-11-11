@@ -38,7 +38,7 @@ public class ObjectToJSON {
 				if(c.getName().endsWith("Integer")){
 					prm = new Integer(1);
 				}else if(c.getName().endsWith("String")){
-					prm = new String("a");
+					prm = new String("K");
 				}else if(c.getName().endsWith("Boolean")){
 					prm = new Boolean(true);
 				}else if(c.getName().endsWith("BigDecimal")){

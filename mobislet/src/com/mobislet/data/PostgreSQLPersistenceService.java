@@ -9,6 +9,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 import com.mobislet.address.Address;
 import com.mobislet.brand.Brand;
 import com.mobislet.mall.Mall;
@@ -106,7 +110,7 @@ private static Connection connection;
 			e.printStackTrace();
 		}
 	}
-	
+	/*
 	public Long addAddress(Address address) {
 		Long id = null;
 		try {
@@ -136,7 +140,36 @@ private static Connection connection;
 		
 		return id;
 	}
-    
+    */
+	
+	public Long addAddress(Address address) {
+		Configuration config = new Configuration().configure();
+//		config.setProperty("ssl", "true");
+//		config.setProperty("javax.net.ssl.SSLSocketFactory", "org.postgresql.ssl.NonValidatingFactory");
+//		config.setProperty("sslmode","require");
+		
+		SessionFactory sessionFactory = config.buildSessionFactory();
+
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+ 
+		Address a = new Address();
+		a.setAddresLine("KUTAY");
+		a.setCity("KUTAY");
+		a.setDistrict("KUTAY");
+		a.setNeighborhood("KUTAY");
+		a.setPostcode(123);
+		a.setStreet("street");
+		a.setTown("town");
+		
+		session.save(a);
+ 
+		session.getTransaction().commit();
+		session.close();
+		
+		return 1L;
+	}
+	
 	public void deleteAddress(Long addressId) {
 		
 	}

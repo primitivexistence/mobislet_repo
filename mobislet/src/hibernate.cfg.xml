@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+ 
+<hibernate-configuration>
+    <session-factory>
+ 
+        <!-- Connection settings -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://ec2-54-195-252-202.eu-west-1.compute.amazonaws.com:5432/d6sugsav98s83p?username=xmdkaeaoeagkwi&amp;password=Er7AglOIMdPDbrzkIW3gF5-Cn-&amp;ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</property>
+        
+    	
+        <!-- SQL dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+ 
+        <!-- Print executed SQL to stdout -->
+        <property name="show_sql">true</property>
+ 
+        <!-- Drop and re-create all database on startup -->
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+ 
+        <!-- Annotated entity classes -->
+        <mapping class="com.mobislet.address.Address"/>
+        
+    </session-factory>
+</hibernate-configuration>
