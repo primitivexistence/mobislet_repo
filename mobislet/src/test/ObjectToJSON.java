@@ -3,9 +3,11 @@ package test;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 import com.google.gson.Gson;
 import com.mobislet.request.AddAddressRequest;
+import com.mobislet.request.GetDiscoveryRequest;
 
 public class ObjectToJSON {
 
@@ -13,7 +15,7 @@ public class ObjectToJSON {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Object obj = new AddAddressRequest();//Change this for Object class
+		Object obj = new GetDiscoveryRequest();//Change this for Object class
 		
 		Gson gson = new Gson();
 		setSampleFieldValues(obj);
@@ -45,6 +47,8 @@ public class ObjectToJSON {
 					prm = new BigDecimal(1);
 				}else if(c.getName().endsWith("Long")){
 					prm = new Long(1);
+				}else if(c.getName().endsWith("ArrayList")){
+					prm = new ArrayList<>();
 				}else{
 					try {
 						prm = Class.forName(c.getName()).getConstructor().newInstance();

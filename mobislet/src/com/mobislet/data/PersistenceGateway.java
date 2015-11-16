@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import com.mobislet.address.Address;
 import com.mobislet.brand.Brand;
+import com.mobislet.discovery.Discovery;
 import com.mobislet.mall.Mall;
+import com.mobislet.request.GetDiscoveryRequest;
 
 public abstract class PersistenceGateway {
 	public static final String FIREBIRD = "FIREBIRD";
@@ -40,6 +42,11 @@ public abstract class PersistenceGateway {
 	}
 
 	public Mall getMall(Long mallId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Discovery getDiscovery(String mallIdStr, String storeIdStr, String campaignIdStr) {
 		// TODO Auto-generated method stub
 		return null;
 	}
