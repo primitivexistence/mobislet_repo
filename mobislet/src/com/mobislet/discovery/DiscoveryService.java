@@ -28,7 +28,7 @@ public class DiscoveryService {
 			e.printStackTrace();
 			builder.status(Status.BAD_REQUEST);
 		}
-		
+		 
 		return builder.build();
 	}
 }
