@@ -3,9 +3,9 @@ package com.mobislet.brand;
 
 public class Brand {
 
-	Long id;
-	String name;
-	String image;
+	public Long id;
+	public String name;
+	public String image;
 	
 	public Long getId() {
 		return id;

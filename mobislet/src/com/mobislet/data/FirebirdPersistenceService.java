@@ -63,7 +63,8 @@ public class FirebirdPersistenceService extends PersistenceGateway{
 	}
 	
 	
-	public void addMall(Mall mall) {
+	public Long addMall(Mall mall) {
+		Long id = null;
 		try {
 			PreparedStatement pst = getConnection().prepareStatement("INSERT INTO MALL VALUES(?,?,?,?,?,?,?,?,?)");
 			pst.setLong(1,0L);
@@ -81,6 +82,7 @@ public class FirebirdPersistenceService extends PersistenceGateway{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return id;
 	}
 	
 	public Long addAddress(Address address) {

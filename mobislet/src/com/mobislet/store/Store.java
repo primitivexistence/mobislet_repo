@@ -18,6 +18,7 @@ public class Store {
 	private String image;
 	private Brand brand;
 	private Mall mall;
+	
 	public Long getId() {
 		return id;
 	}

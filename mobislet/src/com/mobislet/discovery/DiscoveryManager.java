@@ -10,6 +10,7 @@ public class DiscoveryManager {
 
 	public static Discovery getDiscovery(GetDiscoveryRequest request) {
 		PersistenceGateway persistenceGateway = PersistenceGateway.getPersistenceGateway();//PersistenceService.GOOGLE_DATA_STORE
+		
 		String mallIdItemStr = getListedIdItemString(request.getMallIdList());
 		String storeIdItemStr = getListedIdItemString(request.getStoreIdList());
 		String campaignIdItemStr = getListedIdItemString(request.getCampaignIdList());

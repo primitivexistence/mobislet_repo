@@ -15,6 +15,8 @@ public class Mall {
 	private BigDecimal longitude;
 	private BigDecimal altitude;
 	private String image;
+	public String cinema;
+	public String carParking;
 	
 	public Long getId() {
 		return id;

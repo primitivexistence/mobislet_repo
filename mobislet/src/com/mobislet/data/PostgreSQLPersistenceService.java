@@ -96,7 +96,8 @@ private static Connection connection;
 	}
 	
 	
-	public void addMall(Mall mall) {
+	public Long addMall(Mall mall) {
+		Long id = null;
 		try {
 			PreparedStatement pst = getConnection().prepareStatement("INSERT INTO MALL VALUES(?,?,?,?,?,?,?,?,?)");
 			pst.setLong(1,0L);
@@ -114,6 +115,8 @@ private static Connection connection;
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return id;
 	}
 	
 	public Long addAddress(Address address) {

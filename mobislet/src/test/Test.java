@@ -13,6 +13,10 @@ public class Test {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
+		
+		/*
+		
 		Address a = new Address();
 		a.setAddresLine("aglkjas;dfk");
 		a.setCity("city");
@@ -33,6 +37,8 @@ public class Test {
 		m.setName("asdjalsd");
 		m.setAddress(a);
 		MallManager.addMall(m);
+		
+		*/
 		
 		System.out.println("Little injection for testing purposes!");
 	}
