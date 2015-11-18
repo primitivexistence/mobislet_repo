@@ -210,7 +210,7 @@ public class Test {
 
 		//ArrayList<Long> mallIds = getMallIds(); System.out.println("Mall Ids :" + mallIds);
 
-		System.out.println("\nDone Here!");
+		System.out.println("\nDone!");
 	}
 
 }
