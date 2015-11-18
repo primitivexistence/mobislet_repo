@@ -6,13 +6,9 @@ import com.mobislet.data.PersistenceGateway;
 
 public class MallManager {
 
-	public static void addMall(Mall mall) {
+	public static Long addMall(Mall mall) {
 		PersistenceGateway.getPersistenceGateway().addAddress(mall.getAddress());
-		try{
-			PersistenceGateway.getPersistenceGateway().addMall(mall);
-		}catch(Exception e){
-			//remove address.
-		}
+			return PersistenceGateway.getPersistenceGateway().addMall(mall);
 	}
 
 	public static ArrayList<Long> getAllMallIds() {

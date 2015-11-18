@@ -17,6 +17,7 @@ import com.mobislet.address.Address;
 import com.mobislet.brand.Brand;
 import com.mobislet.campaign.Campaign;
 import com.mobislet.campaign.CampaignStatus;
+import com.mobislet.contact.Contact;
 import com.mobislet.discovery.Discovery;
 import com.mobislet.mall.Mall;
 import com.mobislet.request.GetDiscoveryRequest;
@@ -333,5 +334,35 @@ private static Connection connection;
 		}
 		
 		return discovery;
+	}
+
+	@Override
+	public Long addContact(Contact contact) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addMallContactRel(Long mallID, Long contactID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addStoreContactRel(Long storeID, Long contactID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Long addBrand(Brand brand) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Long addStore(Store store) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -8,6 +8,7 @@ import com.mobislet.contact.Contact;
 import com.mobislet.discovery.Discovery;
 import com.mobislet.mall.Mall;
 import com.mobislet.request.GetDiscoveryRequest;
+import com.mobislet.store.Store;
 
 public abstract class PersistenceGateway {
 	public static final String FIREBIRD = "FIREBIRD";
@@ -32,29 +33,29 @@ public abstract class PersistenceGateway {
 
 
 	// Address Methods
-	public Long addAddress(Address address){return null;}
+	public abstract Long addAddress(Address address);
 
-	public void deleteAddress(Long addressId){}
+	public abstract void deleteAddress(Long addressId);
 	
 	
 	// Contact Methods;
-	public Long addContact(Contact contact){return null;}
+	public abstract Long addContact(Contact contact);
 
-	public void addMallContactRel(Long mallID, Long contactID){}
+	public abstract void addMallContactRel(Long mallID, Long contactID);
 	
-	public void addStoreContactRel(Long storeID, Long contactID){}
+	public abstract void addStoreContactRel(Long storeID, Long contactID);
 
 	
 	// Brand methods;
-	public Brand getBrand(Long brandId){return null;}
+	public abstract Brand getBrand(Long brandId);
 
 
 	// Mall methods;
-	public Long addMall(Mall mall){return null;}
+	public abstract Long addMall(Mall mall);
 
-	public ArrayList<Long> getAllMallIds(){return null;}
+	public abstract ArrayList<Long> getAllMallIds();
 
-	public Mall getMall(Long mallId){return null;}
+	public abstract Mall getMall(Long mallId);
 
 
 
@@ -62,10 +63,14 @@ public abstract class PersistenceGateway {
 
 	
 	// Discovery Methods
-	public Discovery getDiscovery(String mallIdStr, String storeIdStr, String campaignIdStr){return null;}
+	public abstract Discovery getDiscovery(String mallIdStr, String storeIdStr, String campaignIdStr);
 
 
-	
-	
+	public abstract Long addBrand(Brand brand);
+
+
+	public abstract Long addStore(Store store);
+
+
 	
 }

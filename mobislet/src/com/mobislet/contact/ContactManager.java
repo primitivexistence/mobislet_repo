@@ -1,6 +1,5 @@
 package com.mobislet.contact;
 
-import com.mobislet.data.MySQLPersistenceService;
 import com.mobislet.data.PersistenceGateway;
 
 public class ContactManager {

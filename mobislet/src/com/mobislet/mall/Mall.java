@@ -15,9 +15,28 @@ public class Mall {
 	private BigDecimal longitude;
 	private BigDecimal altitude;
 	private String image;
-	public String cinema;
-	public String carParking;
+	private String cinema;
+	private String carParking;
+	private int mallType;
 	
+	public String getCinema() {
+		return cinema;
+	}
+	public void setCinema(String cinema) {
+		this.cinema = cinema;
+	}
+	public String getCarParking() {
+		return carParking;
+	}
+	public void setCarParking(String carParking) {
+		this.carParking = carParking;
+	}
+	public int getMallType() {
+		return mallType;
+	}
+	public void setMallType(int mallType) {
+		this.mallType = mallType;
+	}
 	public Long getId() {
 		return id;
 	}

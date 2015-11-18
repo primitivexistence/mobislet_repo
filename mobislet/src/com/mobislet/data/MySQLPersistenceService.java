@@ -292,7 +292,7 @@ public class MySQLPersistenceService extends PersistenceGateway{
 		try {
 
 
-			String query = "select mall_id from mall";
+			String query = "select mall_id from mall limit 5";
 
 			// create the java statement
 			Statement st = getConnection().prepareStatement(query);
@@ -303,8 +303,12 @@ public class MySQLPersistenceService extends PersistenceGateway{
 
 			mallIdList = new ArrayList<Long>();
 			while (resultSet.next()) {
-				mallIdList.add(resultSet.getLong("MALL_ID"));
+				mallIdList.add(resultSet.getLong("mall_id"));
 			}
+			
+			//System.out.println("Resulset:" + resultSet.toString()); 
+			//System.out.println("Mall IDs:" + mallIdList.toString()); 
+		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -328,9 +332,9 @@ public class MySQLPersistenceService extends PersistenceGateway{
 			pst.setBigDecimal(7,mall.getLatitude());
 			pst.setBigDecimal(8,mall.getLongitude());
 			pst.setBigDecimal(9,mall.getAltitude());
-			pst.setString(10,mall.cinema);
-			pst.setString(11,mall.carParking);
-			pst.setString(12,"0");
+			pst.setString(10,mall.getCinema());
+			pst.setString(11,mall.getCarParking());
+			pst.setInt(12,mall.getMallType());
 
 			int affectedRows = pst.executeUpdate();
 
@@ -369,7 +373,7 @@ public class MySQLPersistenceService extends PersistenceGateway{
 			PreparedStatement pst = getConnection().prepareStatement("INSERT INTO store VALUES(?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			pst.setLong(1,0L);
 			pst.setString(2, store.getName());
-			pst.setString(3, "");
+			pst.setString(3, store.getDscr());
 			pst.setLong(4, store.getAddress().getId());
 			pst.setString(5, store.getAddressDscr());
 			pst.setLong(6, store.getMall().getId());
@@ -379,8 +383,7 @@ public class MySQLPersistenceService extends PersistenceGateway{
 			pst.setBigDecimal(10, store.getLongitude());
 			pst.setBigDecimal(11, store.getAltitude());
 
-
-
+			
 			int affectedRows = pst.executeUpdate();
 
 			if (affectedRows == 0) {
@@ -409,6 +412,7 @@ public class MySQLPersistenceService extends PersistenceGateway{
 	}
 
 	public Discovery getDiscovery(String mallIdStr, String storeIdStr, String campaignIdStr) {
+		
 		Statement statement;
 		ResultSet mallResultSet = null;
 		ResultSet storeResultSet = null;
@@ -419,17 +423,22 @@ public class MySQLPersistenceService extends PersistenceGateway{
 			statement = getConnection().createStatement();
 
 			if(mallIdStr != null){
-				mallResultSet = statement.executeQuery("SELECT * FROM mall WHERE MALL_ID NOT IN (" + mallIdStr +") LIMIT 3");
+				mallResultSet = statement.executeQuery("SELECT * FROM mall WHERE mall_id NOT IN (" + mallIdStr +") LIMIT 3");
 			}else{
 				mallResultSet = statement.executeQuery("SELECT * FROM mall LIMIT 3");
 			}
 			ArrayList<Mall> mallList = new ArrayList<Mall>();
+			
+			System.out.print("\nMall List:");
+
 			while (mallResultSet.next()) {
+				
 				Mall mall = new Mall();
+				
 				mall.setAddressDscr(mallResultSet.getString("ADDRESS_DSCR"));
 				mall.setAltitude(mallResultSet.getBigDecimal("ALTITUDE"));
 				mall.setDscr(mallResultSet.getString("DSCR"));
-				mall.setId(mallResultSet.getLong("MALL_ID"));
+				mall.setId(mallResultSet.getLong("mall_id"));
 				mall.setImage(mallResultSet.getString("IMAGE"));
 				mall.setLatitude(mallResultSet.getBigDecimal("LATITUDE"));
 				mall.setLongitude(mallResultSet.getBigDecimal("LONGITUDE"));
@@ -438,42 +447,55 @@ public class MySQLPersistenceService extends PersistenceGateway{
 				Address address = new Address();
 				address.setId(mallResultSet.getLong("ADDRESS_ID"));
 				mall.setAddress(address);
-
+				
 				mallList.add(mall);
-			}
+			
+				System.out.print(mall.getId() + ",");
+		
+				}
 
+			
 			discovery.setMallList(mallList);
 
 			if(storeIdStr != null){
 				storeResultSet = statement.executeQuery("SELECT * FROM store WHERE STORE_ID NOT IN (" + storeIdStr +") LIMIT 3");
 			}else{
-				storeResultSet = statement.executeQuery("SELECT * FROM store WHERE LIMIT 3");
+				storeResultSet = statement.executeQuery("SELECT * FROM store LIMIT 3");
 			}
+			
+			System.out.print("\nStore List:");
+
+			
 			ArrayList<Store> storeList = new ArrayList<Store>();
 			while (storeResultSet.next()) {
+				
+
 				Store store = new Store();
-				store.setAddressDscr(storeResultSet.getString("ADDRESS_DSCR"));
-				store.setAltitude(storeResultSet.getBigDecimal("ALTITUDE"));
-				store.setDscr(storeResultSet.getString("DSCR"));
-				store.setId(storeResultSet.getLong("STORE_ID"));
-				store.setImage(storeResultSet.getString("IMAGE"));
-				store.setLatitude(storeResultSet.getBigDecimal("LATITUDE"));
-				store.setLongitude(storeResultSet.getBigDecimal("LONGITUDE"));
-				store.setName(storeResultSet.getString("NAME"));
+				store.setAddressDscr(storeResultSet.getString("address_dscr"));
+				store.setAltitude(storeResultSet.getBigDecimal("altitude"));
+				store.setDscr(storeResultSet.getString("dscr"));
+				store.setId(storeResultSet.getLong("store_id"));
+				store.setImage(storeResultSet.getString("image"));
+				store.setLatitude(storeResultSet.getBigDecimal("latitude"));
+				store.setLongitude(storeResultSet.getBigDecimal("longitude"));
+				store.setName(storeResultSet.getString("name"));
 
 				Mall mall = new Mall();
-				mall.setId(storeResultSet.getLong("MALL_ID"));
+				mall.setId(storeResultSet.getLong("mall_id"));
 				store.setMall(mall);
 
 				Brand brand = new Brand();
-				brand.setId(storeResultSet.getLong("BRAND_ID"));
+				brand.setId(storeResultSet.getLong("brand_id"));
 				store.setBrand(brand);
 
 				Address address = new Address();
-				address.setId(mallResultSet.getLong("ADDRESS_ID"));
+				address.setId(storeResultSet.getLong("address_id"));
 				mall.setAddress(address);
 
 				storeList.add(store);
+				
+				System.out.print(store.getId() + ",");
+
 			}
 
 			discovery.setStoreList(storeList);
@@ -481,8 +503,11 @@ public class MySQLPersistenceService extends PersistenceGateway{
 			if(campaignIdStr != null){
 				campaignResultSet = statement.executeQuery("SELECT * FROM campaign WHERE CAMPAIGN_ID NOT IN (" + campaignIdStr +") LIMIT 3");
 			}else{
-				campaignResultSet = statement.executeQuery("SELECT * FROM campaign WHERE LIMIT 3");
+				campaignResultSet = statement.executeQuery("SELECT * FROM campaign LIMIT 3");
 			}
+			
+			System.out.print("\nCampaign List:");
+
 			ArrayList<Campaign> campaignList = new ArrayList<Campaign>();
 			while (campaignResultSet.next()) {
 				Campaign campaign = new Campaign();
@@ -498,9 +523,12 @@ public class MySQLPersistenceService extends PersistenceGateway{
 				campaign.setCmpStatus(cmpStatus);
 
 				campaignList.add(campaign);
+				System.out.print(campaign.getId() + ",");
+
 			}
 
 			discovery.setCampaignList(campaignList);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

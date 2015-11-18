@@ -6,10 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.mobislet.address.Address;
 import com.mobislet.brand.Brand;
+import com.mobislet.contact.Contact;
+import com.mobislet.discovery.Discovery;
 import com.mobislet.mall.Mall;
+import com.mobislet.store.Store;
 
 public class FirebirdPersistenceService extends PersistenceGateway{
 	private static Connection connection;
@@ -117,5 +121,54 @@ public class FirebirdPersistenceService extends PersistenceGateway{
     
 	public void deleteAddress(Long addressId) {
 		
+	}
+
+	@Override
+	public Long addContact(Contact contact) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addMallContactRel(Long mallID, Long contactID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addStoreContactRel(Long storeID, Long contactID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ArrayList<Long> getAllMallIds() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mall getMall(Long mallId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Discovery getDiscovery(String mallIdStr, String storeIdStr,
+			String campaignIdStr) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Long addBrand(Brand brand) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Long addStore(Store store) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
