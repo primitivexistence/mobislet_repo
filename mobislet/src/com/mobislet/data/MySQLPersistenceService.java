@@ -537,5 +537,11 @@ public class MySQLPersistenceService extends PersistenceGateway{
 		return discovery;
 	}
 
+	@Override
+	public String getMessage() {
+		// TODO Auto-generated method stub
+		return "Selamlar Dunya!";
+	}
+
 
 }

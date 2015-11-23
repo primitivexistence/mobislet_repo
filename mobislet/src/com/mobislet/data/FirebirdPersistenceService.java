@@ -171,4 +171,10 @@ public class FirebirdPersistenceService extends PersistenceGateway{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String getMessage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

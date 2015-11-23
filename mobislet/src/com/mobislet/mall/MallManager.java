@@ -11,12 +11,11 @@ public class MallManager {
 			return PersistenceGateway.getPersistenceGateway().addMall(mall);
 	}
 
-	public static ArrayList<Long> getAllMallIds() {
-		return PersistenceGateway.getPersistenceGateway().getAllMallIds();
-	}
-
 	public static Mall getMall(Long mallId) {
 		return PersistenceGateway.getPersistenceGateway().getMall(mallId);
 	}
 
+	public static ArrayList<Long> getAllMallIds() {
+		return PersistenceGateway.getPersistenceGateway().getAllMallIds();
+	}
 }

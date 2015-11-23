@@ -72,5 +72,8 @@ public abstract class PersistenceGateway {
 	public abstract Long addStore(Store store);
 
 
+	public abstract String getMessage();
+
+
 	
 }

@@ -206,9 +206,10 @@ public class Test {
 
 		//insertStoreToMySQLDatabaseTest();
 
-		// getDiscoverItems();
+		//getDiscoverItems();
 
-		//ArrayList<Long> mallIds = getMallIds(); System.out.println("Mall Ids :" + mallIds);
+		ArrayList<Long> mallIds = getMallIds();
+		System.out.println("Mall Ids :" + mallIds);
 
 		System.out.println("\nDone!");
 	}
